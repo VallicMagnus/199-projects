@@ -1,0 +1,56 @@
+//Grading ID: B7097
+//Lab#: 5
+//Due Date: 10/22/17
+//Section: 75
+//Program displays stars in ascending, decending, reverse decending and finally reverse ascending
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using static System.Console;
+
+namespace Lab5
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            const int MAX_ROWS = 10; // max number of rows and stars
+
+
+            WriteLine("Pattern A");                       // this itereation will display stars 1-10 in ascending order
+            for (int row = 1; row <= MAX_ROWS; row++)
+            {
+                for (int star = 1; star <= row; star++)
+                    Write("*");
+                WriteLine();
+            }
+            WriteLine("Pattern B");                       // this itereation will display stars 10-1 in decending order
+            for (int row = MAX_ROWS; row >= 1; row--)
+            {
+                for (int star = 1; star <= row; star++)
+                    Write("*");
+                WriteLine();
+            }
+            WriteLine("Pattern C");                      // this iteration will display stars 10-1 in reverse decending order
+            for (int row = MAX_ROWS; row >= 1; row--)
+            {
+                for (int spaces = 1; spaces <= MAX_ROWS - row; spaces++)
+                    Write(" ");
+                for (int star = 1; star <= row; star++)
+                    Write("*");
+                WriteLine();
+            }
+            WriteLine("Pattern D");                      // this itereation will display stars 1-10 in reverse ascending order
+            for (int row = 1; row <= MAX_ROWS; row++)
+            {
+                for (int spaces = 1; spaces <= MAX_ROWS - row; spaces++)
+                    Write(" ");
+                for (int star = 1; star <= row; star++)
+                    Write("*");
+                WriteLine();
+            }
+        }
+    }
+}

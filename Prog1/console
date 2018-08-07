@@ -1,0 +1,23 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using static System.Console;
+
+namespace ConsoleApp1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            const double CENTIMETERS_PER_INCH = 2.54;
+            double inches;
+            double centimeters;
+            Write("Enter number of inches to convert:");
+            inches = double.Parse(ReadLine());
+            centimeters = inches * CENTIMETERS_PER_INCH;
+            WriteLine($"{inches} inches is equal to {centimeters} centimeters");
+        }
+    }
+}

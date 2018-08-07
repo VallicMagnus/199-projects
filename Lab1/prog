@@ -1,0 +1,27 @@
+//Grading ID:b7097
+//Lab #:1
+//Due Date:09/03/2017
+//Course Section:75
+//Program opens console prompt and give some personal info
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Lab1
+{
+    //to shorten repeated code
+    using static System.Console;
+    class Profile
+    {
+        static void Main()
+        {
+            //output
+            WriteLine("Grading ID:      B7097");
+            WriteLine("Hobbies:         Gaming");
+            WriteLine("Favorite books:  The Saxon Tails by Bernard Cornwell");
+            WriteLine("Favorite Movie:  The Star Wars Saga or The Dark Knighht with the Heath Ledger Joker");
+        }
+    }
+}

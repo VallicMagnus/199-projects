@@ -1,0 +1,78 @@
+//Grading ID: B7097
+//Program #: 4
+//Due Date: 12/05/2017
+//Section: 75
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using static System.Console;
+
+namespace program4
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+            LibraryBook book1 = new LibraryBook("Trumpocracy: It's got what plants crave",
+                "Mike Pence", "La casa Blanca", 1989, "12345");
+            LibraryBook book2 = new LibraryBook("I Actually did do it",
+                "OJ Simpson", "Unconvicted Murders Publishing Group", 1994, "54321");
+            LibraryBook book3 = new LibraryBook("Meme Runner",
+                "Vladimir Putin", "Propaganda Publishing", 2016, "67890");
+            LibraryBook book4 = new LibraryBook("Such Perks, Much Wallflowers",
+                "Doggo", "DankMems inc.", 2014, "09876");
+            LibraryBook book5 = new LibraryBook("Pepe Wars: A New Meme",
+                "George Flucas", "Flucas Arts", 1977, "13372");
+
+
+
+            LibraryBook[] books = new LibraryBook[5];
+
+            books[0] = book1; // setting each book to a postion in the array
+            books[1] = book2;
+            books[2] = book3;
+            books[3] = book4;
+            books[4] = book5;
+
+            WriteLine("\n*~~~~~~~~~~*"); // denoting the begining of the original output
+            WriteLine("| Original |");
+            WriteLine("*~~~~~~~~~~*\n");
+            PrintOut(books);
+
+
+            book1.Publisher = "Propaganda Publishing";
+            book2.CheckOut();
+            book3.CheckOut();
+            book4.CallNumber = "11111";
+            book5.CallNumber = "69697";
+            WriteLine("\n*~~~~~~~~~~~~~~~~~~~~~~~~*"); // denoting the output post property changes
+            WriteLine("| After property changes |");
+            WriteLine("*~~~~~~~~~~~~~~~~~~~~~~~~*\n");
+            PrintOut(books);
+
+
+            book2.ReturnToShelf();
+            book3.ReturnToShelf();
+            WriteLine("\n*~~~~~~~~~~~~~~~~~~~~~~*"); // denoting the output post book return
+            WriteLine("| After books returned |");
+            WriteLine("*~~~~~~~~~~~~~~~~~~~~~~*\n");
+            PrintOut(books);
+        }
+
+        // Precondition:  Recieves an array
+        // Postcondition: Will give a clean output of properties for each book object and status
+        public static void PrintOut(LibraryBook[] books) // output of
+        {
+            // generically process each element in array books
+            foreach (LibraryBook currentBook in books)
+            {
+                WriteLine(currentBook); // invoke ToString() implicitly
+                WriteLine();
+            }
+        }
+    }
+}

@@ -1,0 +1,84 @@
+//Grading ID: B7097
+//Lab #:2
+//Course Section: 75
+//Due Date:09/17/2017
+
+/*This program takes input from the user in the form
+ * of two floting point numbers and outputs the sum, difference,
+ * product, quotient and the mean of the two numbers*/
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using static System.Console;
+namespace Lab2
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //First float point number in numeric
+            float numOne;
+
+            //Second float point number in numeric
+            float numTwo;
+
+            //Adds both floating point varables
+            float sum;
+
+            //Subtracts both floating point varables
+            float difference;
+
+            //Multiplies both floating point varables
+            float product;
+
+            //Devides both floating point varables
+            float quotient;
+
+            //Averages both floating point varables
+            float mean;
+
+            //String variant of numOne and numTwo
+            string numOneAsString;
+            string numTwoAsString;
+
+            //Lines for first user entry
+            Write("Enter 1st floating point number:");
+            numOneAsString = ReadLine();
+            numOne = float.Parse(numOneAsString);
+
+            //Lines for second user entry
+            Write("Enter 2nd floating point number:");
+            numTwoAsString = ReadLine();
+            numTwo = float.Parse(numTwoAsString);
+
+            //Addition of numOne and numTwo
+            sum = numOne + numTwo;
+            WriteLine($"{numOne:F3} + {numTwo:F3} = {sum:F3}");
+
+            //Subtraction of numOne and numTwo
+            difference = numOne - numTwo;
+            WriteLine($"{numOne:F3} - {numTwo:F3} {difference:F3}");
+
+            //Multiplication of numOne and numTwo
+            product = numOne * numTwo;
+            WriteLine($"{numOne:F3} * {numTwo:F3} {product:F3}");
+
+            //Division of numOne and numTwo
+            quotient = numOne / numTwo;
+            WriteLine($"{numOne:F3} / {numTwo:F3} {quotient:F3}");
+
+            //Average of numOne and numTwo
+            mean = sum / 2;
+            WriteLine("--Mean of");
+
+            WriteLine($"{numOne} , {numTwo} = {mean:F3}");
+
+
+
+
+        }
+    }
+}

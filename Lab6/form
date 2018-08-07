@@ -1,0 +1,48 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace Lab6
+{
+    public partial class PrimaryForm : Form
+    {
+        public PrimaryForm()
+        {
+            InitializeComponent();
+        }
+
+        private void SubmitButton_Click(object sender, EventArgs e)
+        {
+            int typedWords;
+            int[] gradeRangeLowLimits = { 0, 16, 31, 51, 76 };
+            string[] grades = { "F", "D", "C", "B", "A" };
+            bool found = false;
+            string grade = "F";
+
+            typedWords = int.Parse(UserTextBox.Text);
+
+            int index = gradeRangeLowLimits.Length - 1;
+
+            while (index >= 0 && !found)
+            {
+                if (typedWords >= gradeRangeLowLimits[index])
+                    found = true;
+                else
+                    --index;
+            }
+            if (found)
+                grade = grades[index];
+
+            OutputLabel.Text = grade;
+
+
+
+        }
+    }
+}

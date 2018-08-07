@@ -1,0 +1,65 @@
+//Grading ID:       B7097
+//Lab #:            7
+//Due Date:         11/12/17
+//Course #/Section: 199-75
+//This program calculates how much money you need to invest today to earn a certain amount in the future.(net present value formula)
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace Lab7
+{
+    public partial class Lab7Form : Form
+    {
+        public Lab7Form()
+        {
+            InitializeComponent();
+        }
+
+        //PreCondition:The user will input the values correctly in the proper fields
+        //Postcondition:After the user inputs the values and hits the button,
+        //if the user enters the correct values, it will display the Net Present Value
+        private void CalcButton_Click(object sender, EventArgs e)
+        {
+            double futeValue, aprVal, netPresent; // holds the text input/output from/to user: Future Value, Annual Interest Rate, Net Present Value respectively.
+            int yearsVal; //Holds the input for an integer number of years
+
+
+            if (double.TryParse(FutureValue.Text, out futeValue)) // if the future Value is a double
+            {
+                if (double.TryParse(AnnualInterest.Text, out aprVal))// if the annual interest is a double
+                {
+                    if (int.TryParse(NoOfYears.Text, out yearsVal))// if the number of years is an int
+                    {
+                        netPresent = CalcPresentValue(futeValue, aprVal, yearsVal); //value holds the Method return value
+                        OutputLabel.Text = $"{netPresent:C}"; // send it to the output label
+                    }
+                    else
+                    MessageBox.Show("Enter a valid integer!"); // you're a failure, follow the directions
+                }
+                else
+                MessageBox.Show("Enter a valid interest rate!");// you're a failure, follow the directions
+            }
+            else
+            MessageBox.Show("Enter a valid Number!");// you're a failure, follow the directions
+
+
+        }
+
+        //Precondition: The user must enter the value thew user wants to have in the future as a double
+        //then the user will enter the interest rate as a double
+        //finnally, the user will enter the term of the calculation in whole years(integer)
+        //Postcondition: the method will return the Net Present Value
+        public static double CalcPresentValue(double futureValue, double apr, int years = 1)
+        {
+            double netPresentValue = futureValue / Math.Pow(1 + apr, years);
+            return netPresentValue;
+        }
+    }
+}

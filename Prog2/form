@@ -1,0 +1,114 @@
+//Grading ID: B7097
+//Section:    75
+//Due Date:   10/22/2017
+/* This gui application will ask for a student's first
+ initial of their last name as well as */
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace Program_2
+{
+    public partial class MainForm : Form
+    {
+        public MainForm()
+        {
+            InitializeComponent();
+        }
+
+        private void SubmitButton_Click(object sender, EventArgs e)
+        {
+            if (InitialTextBox.Text.Length > 0) // so the user cannot enter an empty
+            {
+                const string TIME1 = "8:30"; //time slots for for all registration times
+                const string TIME2 = "10:00";
+                const string TIME3 = "11:30";
+                const string TIME4 = "2:00";
+                const string TIME5 = "4:00";
+                // dates for registration from senior to junior to the first and then second sophomore and freshman dates respectively.
+                const string DAY1 = "Nov. 3rd";  //senior
+                const string DAY2 = "Nov. 6th";  //junior
+                const string DAY3 = "Nov. 7th";  //sophomore day 1
+                const string DAY4 = "Nov. 8th";  //sophomore day 2
+                const string DAY5 = "Nov. 9th";  //freshman  day 1
+                const string DAY6 = "Nov. 10th"; //freshman  day 2
+                string time = "Error"; // time variable with an error to initialize and to troubleshoot prior to being assigned
+                string day = "Error"; // time variable with an error to initialize and to troubleshoot prior to being assigned
+                char letterInput = InitialTextBox.Text[0]; //takes the user input of a charater
+                char letter = char.ToUpper(letterInput);   // converts that character to an uppercase letter
+
+                if (char.IsLetter(letterInput)) //if the input is a letter only
+                {
+
+                    if (JuniorButton.Checked == true || SeniorButton.Checked == true) // radio button for either senior or junior since they both use the same time/letter combo
+                    {
+                        if (letter <= 'D')
+                            time = TIME2;
+                        else if (letter <= 'I')
+                            time = TIME3;
+                        else if (letter <= 'O')
+                            time = TIME4;
+                        else if (letter <= 'S')
+                            time = TIME5;
+                        else
+                            time = TIME1;
+
+                        if (JuniorButton.Checked == true) //if junior then junior day, else senior day
+                        {
+                            day = DAY2;
+                        }
+                        else
+                            day = DAY1;
+                    }
+                    else if (SophomoreButton.Checked == true || FreshmanButton.Checked == true) // radio button for either sophomore or freshman since they both use the same time/letter combo
+                    {
+
+                        if (letter <= 'C')
+                            time = TIME4;
+                        else if (letter <= 'E')
+                            time = TIME5;
+                        else if (letter <= 'G')
+                            time = TIME1;
+                        else if (letter <= 'J')
+                            time = TIME2;
+                        else if (letter <= 'M')
+                            time = TIME3;
+                        else if (letter <= 'P')
+                            time = TIME4;
+                        else if (letter <= 'R')
+                            time = TIME5;
+                        else if (letter <= 'T')
+                            time = TIME1;
+                        else if (letter <= 'W')
+                            time = TIME2;
+                        else
+                            time = TIME3;
+
+                        if (SophomoreButton.Checked == true)      // if sophomore and initial is >= 'G' and <= 'S' second sophomore day, else first sophomore day
+                        {
+                            if (letter >= 'G' && letter <= 'S')
+                                day = DAY4;
+                            else
+                                day = DAY3;
+                        }
+                        else if (letter >= 'G' && letter <= 'S') // if freshman and initial is >= 'G' and <= 'S' second freshman day, else first freshman day
+                            day = DAY6;
+                        else
+                            day = DAY5;
+                    }
+                    outputLabel.Text = $"{day} at {time}"; // output to the label after all arguements are negotiated
+                }
+                else // if there is a non-alpha character entered
+                    outputLabel.Text = "That is not valid!";
+            }
+            else // if there is no value in the textbox
+                outputLabel.Text = "Blank Field!";
+        }
+    }
+}

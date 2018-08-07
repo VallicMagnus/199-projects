@@ -1,0 +1,53 @@
+//Grading ID:     B7097
+//Lab #:          3
+//Date:           09/24/17
+//Course Section: 75
+/*This Progran will take an input from the user is the form of a number, in this case the price of a meal,
+ then it will calculate the tip amount for 15%, 18% and 20%*/
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace Lab3
+{
+    public partial class tipCalc : Form
+    {
+        public tipCalc()
+        {
+            InitializeComponent();
+        }
+        //This is the event handler for the calc button
+        private void calcTip_Click(object sender, EventArgs e)
+        {
+            //Interger variables for user mealprice input
+            decimal mealPrice;
+            //Variable to calculate tip rates
+            decimal calculate;
+
+            //Constant values for the different tip rates, 15%, 18%, 20% respectivly
+            const decimal TIP_RATE_LOW = .15m;
+            const decimal TIP_RATE_MID = .18m;
+            const decimal TIP_RATE_HIGH = .20m;
+
+            //Parsing the varible so it can be taken as input
+            mealPrice = decimal.Parse(priceBox.Text);
+
+            //Calculating Tip rate for each output, low to high
+            calculate = mealPrice * TIP_RATE_LOW;
+            tipLowOutput.Text = $"{calculate:C}";
+
+            calculate = mealPrice * TIP_RATE_MID;
+            tipMidOutput.Text = $"{calculate:C}";
+
+            calculate = mealPrice * TIP_RATE_HIGH;
+            tipHighOutput.Text = $"{calculate:C}";
+
+        }
+    }
+}

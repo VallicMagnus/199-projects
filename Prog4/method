@@ -1,0 +1,103 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace program4
+{
+    class LibraryBook
+    {
+        private string _author; //backing field
+        private string _title; //backing field
+        private string _publisher; //backing field
+        private int _copyrightYear; //backing field
+        private string _callNumber; //backing field
+        private bool _checkedOut = false; //backing field, default to false
+
+
+
+        public string Author
+        {
+            // Precondition:  None
+            // Postcondition: The Author has been returned
+            get { return _author; }
+            set { _author = value; }
+        }
+
+        public string Title
+        {
+            // Precondition:  None
+            // Postcondition: The Title has been returned
+            get { return _title; }
+            set { _title = value; }
+        }
+
+        public string Publisher
+        {
+            // Precondition:  None
+            // Postcondition: The Publisher has been returned
+            get { return _publisher; }
+            set { _publisher = value; }
+        }
+
+        public int CopyrightYear
+        {
+            // Precondition:  cannot be a non negitive integer
+            // Postcondition: If a negitive integer is entered,
+            // copyright year will default to 2017.
+            get { return _copyrightYear; }
+            set
+            {
+                if (value >= 0)
+                    _copyrightYear = value;
+                else
+                    _copyrightYear = 2017;
+            }
+        }
+
+        public string CallNumber
+        {
+            // Precondition:  None
+            // Postcondition: The Call Number has been returned
+            get { return _callNumber; }
+            set { _callNumber = value; }
+        }
+
+        public LibraryBook(string title, string author,
+            string publisher, int copyrightYear, string callNumber) // constructor for each property
+        {
+            Title = title;
+            Author = author;
+            Publisher = publisher;
+            CopyrightYear = copyrightYear;
+            CallNumber = callNumber;
+        }
+
+        public void CheckOut() // Method chechs out a book
+        {
+            _checkedOut = true;
+        }
+
+        public void ReturnToShelf() // Method returns the book to the shelf
+        {
+            _checkedOut = false;
+        }
+
+        public bool IsCheckedOut() // Method just gives the availability of a book
+        {
+            return _checkedOut;
+        }
+
+
+        // Precondition:  Recieves a string
+        // Postcondition: Will give a clean output of info for each property
+        public override string ToString()
+        {
+            return $"Title: {Title} {Environment.NewLine}Author: {Author} {Environment.NewLine}" +
+                $"Publisher: {Publisher} {Environment.NewLine}Copyright Year: {CopyrightYear}" +
+                $"{Environment.NewLine}Call Number: {CallNumber} {Environment.NewLine}" +
+                $"Checked out?: {IsCheckedOut()}";
+        }
+    }
+}
